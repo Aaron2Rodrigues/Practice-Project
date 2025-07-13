@@ -1,6 +1,3 @@
-# Practice-Project
-# HI
-
 # End to End Data Science Project
 
 ### Workflows--ML Pipeline
