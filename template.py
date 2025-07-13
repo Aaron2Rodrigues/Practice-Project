@@ -4,7 +4,7 @@ from pathlib import Path
 
 name = 'Salary_project'
 
-logging.basicConfig(level=logging.INFO , format= '%(asctime)s %(message)s]')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s]')
 
 list_of_folders = [
     '.github/workflows/.gitkeep',
@@ -28,18 +28,17 @@ list_of_folders = [
 
 for fol in list_of_folders:
     filepath = Path(fol)
-    filedir,filename = os.path.split(filepath)
+    filedir, filename = os.path.split(filepath)
 
+    # 🛠 Fix: Create the directory (not the file path)
     if filedir != '':
-        os.makedirs(filepath,exist_ok=True)
-        logging.info(f'Creating directory {filedir} for file {filename} ')
+        os.makedirs(filedir, exist_ok=True)
+        logging.info(f'Creating directory {filedir} for file {filename}')
 
-    if (not os.path.exists(filepath)) or (os.path.getsize(filepath)==0):
-        with open(filepath,'w') as f:
+    # ✅ Create empty file if it doesn't exist or is empty
+    if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
+        with open(filepath, 'w') as f:
             pass
         logging.info(f'Creating empty file {filename}')
-
     else:
-        logging.info(f'Already exists')
-
-
+        logging.info(f'File {filename} already exists')
