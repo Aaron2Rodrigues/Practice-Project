@@ -12,7 +12,6 @@ list_of_files = [
     f'src/{name}/config/__init__.py',
     f'src/{name}/config/configuration.py',
     f'src/{name}/components/__init__.py',
-    f'src/{name}/components/components.py',
     f'src/{name}/entity/__init__.py',
     f'src/{name}/entity/config_entity.py',
     f'src/{name}/utils/__init__.py',
