@@ -1,3 +1,4 @@
-myenv
-Data
-.github
+myenv/
+myvenv/
+Data/
+.github/
