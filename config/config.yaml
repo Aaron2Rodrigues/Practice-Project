@@ -1,0 +1,6 @@
+artifact_root: artifacts
+
+DataIngestion:
+    root_dir: artifacts/DataIngestion
+    input_path: artifacts/DataIngestion/raw/salary.csv
+    output_path: artifacts/DataIngestion/processed/salary_processed.csv

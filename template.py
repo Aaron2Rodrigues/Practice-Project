@@ -27,20 +27,19 @@ list_of_files = [
 ]
 
 
-for fol in list_of_files:
-    filepath = Path(fol)
-    filedir, filename = os.path.split(filepath)
+for file_path in list_of_files:
+    filepath = Path(file_path)
+    filedir = filepath.parent
 
-    # 🛠 Fix: Create the directory (not the file path)
-    if filedir != '':
-        os.makedirs(filedir, exist_ok=True)
-        logging.info(f'Creating directory {filedir} for file {filename}')
+    # Create parent directories
+    os.makedirs(filedir, exist_ok=True)
+    logging.info(f'Ensured directory {filedir} exists for file {filepath.name}')
 
-    # ✅ Create empty file if it doesn't exist or is empty
-    if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
+    # Create the file if it doesn't exist or is empty
+    if not filepath.exists() or filepath.stat().st_size == 0:
         with open(filepath, 'w') as f:
             pass
-        logging.info(f'Creating empty file {filename}')
+        logging.info(f'Created empty file {filepath.name}')
     else:
-        logging.info(f'File {filename} already exists')
+        logging.info(f'{filepath.name} already exists')
 
