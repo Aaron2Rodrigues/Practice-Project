@@ -9,3 +9,10 @@ class DataIngestionConfig:
     input_path: Path
     """ Path to store the processed data """
     output_path: Path
+
+@dataclass
+class DataValidationConfig:
+    root_dir: Path
+    input: Path
+    STATUS_FILE: str
+    all_schema: dict

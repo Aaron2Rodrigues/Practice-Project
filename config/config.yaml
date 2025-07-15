@@ -4,3 +4,9 @@ DataIngestion:
     root_dir: artifacts/DataIngestion
     input_path: Data/salaries.csv
     output_path: artifacts/DataIngestion/salary_processed.csv
+
+DataValidation:
+    root_dir: artifacts/DataValidation
+    input: artifacts/DataIngestion/salary_processed.csv
+    STATUS_FILE: artifacts/DataValidation/status.txt
+    
