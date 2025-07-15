@@ -1,4 +1,4 @@
-from src.Salary_project.entity.config_entity import DataIngestionConfig
+from src.Salary_project.entity.config_entity import DataIngestionConfig , DataValidationConfig
 from src.Salary_project import logger
 from src.Salary_project.utils.common import read_yaml,create_directories
 from src.Salary_project.constants import *
@@ -11,11 +11,12 @@ class ConfigurationManager:
         self.params = read_yaml(params_filepath)
         self.schema = read_yaml(schema_filepath)
 
-        create_directories(self.config.artifacts_root)
+        create_directories([self.config.artifact_root])
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
-        config = self.config.data_ingestion
-        create_directories(self.config.root_dir)
+        config = self.config.DataIngestion
+        create_directories([self.config.DataIngestion.root_dir])
+    
 
         data_ingestion = DataIngestionConfig(
             root_dir = config.root_dir,
@@ -23,3 +24,17 @@ class ConfigurationManager:
             output_path = config.output_path
         )
         return data_ingestion
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.DataValidation
+        schema = self.schema.COLUMNS
+
+        create_directories([self.config.DataValidation.root_dir])
+        
+        data_validation = DataValidationConfig(
+            root_dir = config.root_dir,
+            input = config.input,
+            STATUS_FILE = config.STATUS_FILE,
+            all_schema = schema
+        )
+        return data_validation
